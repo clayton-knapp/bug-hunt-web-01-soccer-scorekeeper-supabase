@@ -4,19 +4,20 @@ import {
     getGames,
     createGame,
 } from '../fetch-utils.js';
-import { displayGame } from '../render-utils.js';
+import { renderGame } from '../render-utils.js';
 
 const currentGameEl = document.getElementById('current-game-container');
 const logoutButton = document.getElementById('logout');
 
 const nameForm = document.getElementById('name-form');
-const teamOneAddButton = document.getElementById('teamoneadd-button');
+const teamOneAddButton = document.getElementById('team-one-add-button');
 const teamTwoAddButton = document.getElementById('team-two-add-button');
 const teamOneSubtractButton = document.getElementById('team-one-subtract-button');
 const teamTwoSubtractButton = document.getElementById('team-two-subtract-button');
-const finishGameButton = document.getElementById('finishgamebutton');
+const finishGameButton = document.getElementById('finish-game-button');
 const teamOneLabel = document.getElementById('team-one-name');
 const teamTwoLabel = document.getElementById('team-two-name');
+const pastGamesEl = document.getElementById('past-games-container');
 
 checkAuth();
 
@@ -29,16 +30,15 @@ let currentGame = {
     score2: 0,
 };
 
-nameForm.addEventListener = ('submit', (e) => {
+nameForm.addEventListener('submit', (e) => {
+    e.preventDefault();
     const formData = new FormData(nameForm);
   
-    const name1 = formData.get('team-1');
-    const name2 = formData.get('team-2');
-
-    currentGame.name1 = name1;
-    currentGame.name2 = name2;
+    currentGame.name1 = formData.get('team-one');
+    currentGame.name2 = formData.get('team-two');
     
     nameForm.reset();
+
     displayCurrentGameEl();
 });
 
@@ -72,7 +72,7 @@ function displayCurrentGameEl() {
     teamOneLabel.textContent = currentGame.name1;
     teamTwoLabel.textContent = currentGame.name2;
 
-    const gameEl = displayGame(currentGame);
+    const gameEl = renderGame(currentGame);
     
     gameEl.classList.add('current');
 
@@ -82,7 +82,7 @@ function displayCurrentGameEl() {
 
 function displayAllGames() {
     for (let game of pastGames) {
-        const gameEl = displayGame(game);
+        const gameEl = renderGame(game);
 
         gameEl.classList.add('past');
         
@@ -92,16 +92,24 @@ function displayAllGames() {
 
 
 finishGameButton.addEventListener('click', async() => {
-    
+    //calls createGame and feeds it the currentGame object in state
     await createGame(currentGame);
     
-    const games = getGames();
+    //calls getGames which calls supabase and returns the array, setting equal to returned Game Array
+    const returnedGames = await getGames();
 
-    pastGames = games;
+    //makes our pastGames array in state equal to the returnedGames from getGames call
+    pastGames = returnedGames;
     
     displayAllGames();
     
-    currentGame = {};
+    //reset current state
+    currentGame = {
+        name1: '',
+        name2: '',
+        score1: 0,
+        score2: 0,
+    };
 
     displayCurrentGameEl();
 });
@@ -113,11 +121,13 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
-window.addEventListener('load', () => {
-    const games = getGames();
-
-    if (games) {
-        pastGames = games;
+window.addEventListener('load', async() => {
+    const fetchedGames = await getGames();
+    
+    //if there is something in the fetchedGames array
+    if (fetchedGames) {
+        //then set the local past games array in state to the fetchedGames and Display
+        pastGames = fetchedGames;
 
         displayAllGames();
     }
