@@ -11,8 +11,8 @@ export async function createGame(game){
                 ...game, //what is this syntax ...game ?????
                 user_id: client.auth.user().id, 
             }
-        ]);
-        // .single();
+        ])
+        .single();
 
     return checkError(response);
 }
@@ -21,8 +21,8 @@ export async function createGame(game){
 export async function getGames() {
     const response = await client
         .from('games')
-        .select();
-        // .match({ user_id: client.auth.user().id, });
+        .select()
+        .match({ user_id: client.auth.user().id, });
 
     // console.log(checkError(response));
     return checkError(response);    

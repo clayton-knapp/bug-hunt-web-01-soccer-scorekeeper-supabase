@@ -81,6 +81,8 @@ function displayCurrentGameEl() {
 
 
 function displayAllGames() {
+    pastGamesEl.textContent = '';
+
     for (let game of pastGames) {
         const gameEl = renderGame(game);
 
