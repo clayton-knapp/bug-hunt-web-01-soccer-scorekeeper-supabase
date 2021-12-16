@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <button id="logout">Logout</button>
+        <section class="main-section">
+            <div class="left">
+                <h2>Current Game</h2>
+                <div id="current-game-container"></div>
+                <div class="form-and-buttons">
+                    <form class="name-form" id="name-form"> 
+                        <label>
+                            Team one name
+                            <input name="team-one" />
+                        </label>
+                        <label>
+                            Team two name
+                            <input name="team-two" />
+                        </label>
+                        <button>Name teams</button>
+                    </form>
+                    
+                    <div class="buttons">
+                        <div class="top-buttons">
+                            <div class="left-buttons">
+                                <h3 id="team-one-name">Team One</h3>
+                                <button id="team-one-add-button">
+                                    Add
+                                </button>
+                                <button id="team-one-subtract-button" class="undo">
+                                    Subtract
+                                </button>
+                            </div>
+                            <div class="right-buttons">
+                                <h3 id="team-two-name">Team Two</h3>
+                                <button id="team-two-add-button">
+                                    Add
+                                </button> 
+                                <button id="team-two-subtract-button" class="undo">
+                                    Subtract
+                                </button>    
+                            </div>
+                        </div>
+                        <div class="bottom-buttons">
+                            <button id="finish-game-button">
+                                Finish Game
+                            </button>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <h2>Past Games</h2>
+                </div>
+                <div id="past-games-container"></div>
+            </div>
+
+
+
+
+        </section>
+    </main>
+    <script type="module" src="./games.js"></script>
+</body>
+
+</html>

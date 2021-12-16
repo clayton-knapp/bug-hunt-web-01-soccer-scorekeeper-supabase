@@ -1,0 +1,215 @@
+
+body {
+    /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
+    /* --color1: hsla(349, 69%, 76%, 1);
+    --color2: hsla(207, 67%, 44%, 1);
+    --color3: hsla(200, 61%, 56%, 1);
+    --color4: hsla(187, 41%, 94%, 1);
+    --color5: hsla(170, 28%, 95%, 1); */
+
+    /* --color1: hsla(45, 86%, 83%, 1);
+    --color2: hsla(135, 65%, 98%, 1);
+    --color3: hsla(315, 37%, 86%, 1);
+    --color4: hsla(45, 73%, 98%, 1);
+    --color5: hsla(224, 40%, 79%, 1); */
+    
+    --header-height: 80px;
+    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
+    --gutter: 30px;
+    --footer-height: 25px;
+    background-image: url('../assets/field.png');
+    
+    font-family: 'Titillium Web', sans-serif;
+    background-color: var(--color2);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: calc(var(--footer-height));
+    height: 100%;
+}
+
+section {
+    background-color: var(--color5);
+    padding-top: var(--gutter);
+    padding-bottom: var(--gutter);
+    margin-top: var(--gutter);
+    margin-bottom: var(--gutter);
+    border: solid 2px var(--color1);
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--color3);
+    height: var(--header-height);
+    box-shadow: var(--shadow);
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.gutter-right {
+    margin-right: 20px;
+}
+
+.main-logo {
+    animation: pulse 5s infinite ease-in-out;
+}
+
+header img {
+    height: var(--header-height);
+}
+
+p {
+    margin: var(--gutter);
+}
+
+
+#past-games-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#past-games-container .game {
+    margin: 10px;
+}
+
+#current-game-container {
+    display: flex;
+    justify-content: center;
+}
+
+.game {
+    border: solid 1px black;
+    text-align: center;
+    display: flex;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.team {
+    max-width: 200px;
+    text-overflow: ellipsis;
+}
+
+.game .name {
+    font-size: 1.3rem;
+    border-bottom: solid 2px black;
+    text-overflow: ellipsis;
+}
+
+.game .score {
+    font-size: 1.3rem;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.buttons .top-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons .top-buttons .left-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons .top-buttons .right-buttons {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.top-buttons h3 {
+    border-bottom: solid 1px black;
+    text-align: center;
+}
+
+.name-form {
+    height: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.buttons .bottom-buttons {
+    text-align: center;
+    padding: 20px;
+}
+
+.undo {
+    font-size: .6rem;
+}
+
+.form-and-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-section {
+    width: 90%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+}
+
+.top-buttons button {
+    margin: 5px;
+}
+
+.left, .right {
+    background-color: white;
+    margin: 10px;
+    padding: 40px;
+}
+
+.right {
+    overflow: scroll;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-main label, .auth-main button {
+    display: block;
+}
+
+.auth-main button {
+    margin: 5px;
+}
+
+.auth-main {
+    flex-direction: row;
+}
+
+#logout {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
